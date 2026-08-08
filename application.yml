@@ -1,7 +1,20 @@
-spring:
-  jackson:
-    default-property-inclusion: non_null
+server:
+  port: 8888
 
-logging:
-  level:
-    root: INFO
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/satakshi714/bug-tracker-config
+          default-label: main
+          clone-on-start: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
